@@ -23,4 +23,14 @@ spec:
         - containerPort: 3306
         env:
           - name: MYSQL_ROOT_PASSWORD
-            value: wordpress-error
+            valueFrom:
+              secretKeyRef:
+                name: mysql-secret
+                key: password
+        volumeMounts:
+            - name: mysql-volume
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: mysql-volume
+          persistentVolumeClaim:
+            claimName: mysql-pvc

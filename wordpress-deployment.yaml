@@ -20,3 +20,18 @@ spec:
             cpu: "500m"
         ports:
         - containerPort: 80
+        env:
+          - name: WORDPRESS_DB_HOST
+            value: mysql-deployment
+          - name: WORDPRESS_DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysql-secret
+                key: password
+        volumeMounts:
+          - name: wordpress-volume
+            mountPath: /var/www/html
+      volumes:
+        - name: wordpress-volume
+          persistentVolumeClaim:
+            claimName: wordpress-pvc
