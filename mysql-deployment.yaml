@@ -11,10 +11,11 @@ spec:
     metadata:
       labels:
         app: mysql-deployment
+
     spec:
       containers:
       - name: mysql-image
-        image: mysql:8.0.23
+        image: mysql:5.5.40
         resources:
           limits:
             memory: "512Mi"

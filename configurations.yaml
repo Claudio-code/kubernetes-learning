@@ -1,7 +1,7 @@
-apiVersion: apps/v1
+apiVersion: v1
 kind: List
 items:
-  - apiVersion: apps/v1
+  - apiVersion: v1
     kind: Secret
     metadata:
       name: mysql-secret
@@ -9,7 +9,7 @@ items:
     stringData:
       password: wordpress-2020
 
-  - apiVersion: apps/v1
+  - apiVersion: v1
     kind: PersistentVolumeClaim
     metadata:
       name: mysql-pvc
@@ -19,25 +19,3 @@ items:
       resources:
         requests:
           storage: 1Gi
-
-  - apiVersion: apps/v1
-    kind: PersistentVolumeClaim
-    metadata:
-      name: wordpress-pvc
-    spec:
-      accessModes:
-        - ReadWriteMany
-      resources:
-        requests:
-          storage: 1Gi
-
-  - apiVersion: apps/v1
-    kind: PersistentVolumeClaim
-    metadata:
-      name: wordpress-pvc
-    spec:
-      accessModes:
-        - ReadWriteMany
-      resources:
-        requests:
-          storage: 16i
