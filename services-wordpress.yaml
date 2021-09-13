@@ -1,4 +1,4 @@
-apiVersion: v1
+apiVersion: apps/v1
 kind: List
 items:
   - apiVersion: v1
@@ -6,7 +6,6 @@ items:
     metadata:
       name: mysql-service
     spec:
-      type: ClusterIP
       selector:
         app: mysql-deployment
       ports:
